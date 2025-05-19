@@ -29,7 +29,7 @@ pipeline {
     steps {
         withSonarQubeEnv('sonarQube') {
             bat '''
-                gradle sonarqube ^
+                Gradle sonarqube ^
                   -Dsonar.projectKey=my-maven-app ^
                   -Dsonar.host.url=http://localhost:9000 ^
                   -Dsonar.login=squ_4c861f4b68932a119f73d5ffd385ccd0fc4edee8
