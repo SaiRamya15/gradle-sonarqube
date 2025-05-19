@@ -15,7 +15,7 @@ pipeline {
             }
         }
 
-      stage('Run Jar') {
+/*     stage('Run Jar') {
             steps {
                 bat 'java -jar build\\libs\\gradle-sonarqube-1.0-SNAPSHOT-17.0.5.jar'
     }
@@ -24,7 +24,7 @@ pipeline {
             steps {
                 archiveArtifacts artifacts: 'build/libs/*.jar', fingerprint: true
             }
-        }
+        } */
      stage('SonarQube Analysis') {
             steps {
                 script {
