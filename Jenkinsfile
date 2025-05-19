@@ -17,7 +17,7 @@ pipeline {
 
       stage('Run Jar') {
             steps {
-                bat 'java -jar build\\libs\\gradle-githubactions-demo-1.0-SNAPSHOT-17.0.5.jar'
+                bat 'java -jar build\\libs\\gradle-sonarqube-1.0-SNAPSHOT-17.0.5.jar'
     }
       }
     stage('Archive Artifacts') {
