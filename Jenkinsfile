@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git url: '', branch: 'main'
+                git url: 'https://github.com/SaiRamya15/gradle-sonarqube.git', branch: 'main'
             }
         }
 
@@ -25,5 +25,14 @@ pipeline {
                 archiveArtifacts artifacts: 'build/libs/*.jar', fingerprint: true
             }
         }
+     stage('SonarQube Analysis') {
+            steps {
+                script {
+                    def scannerHome = tool 'SonarQubeScanner'
+                    withSonarQubeEnv('sonarQube') {
+                        bat "${scannerHome}/bin/sonar-scanner"
+                    }
+                }
+            }
     }
 }
