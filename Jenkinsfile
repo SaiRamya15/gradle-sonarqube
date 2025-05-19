@@ -25,19 +25,20 @@ pipeline {
                 archiveArtifacts artifacts: 'build/libs/*.jar', fingerprint: true
             }
         } */
-    stage('SonarQube Analysis') {
-            steps {
-                script{
-                    bat '''
-                            mvn sonar:sonar ^
-                              -Dsonar.projectKey=my-maven-app ^
-                              -Dsonar.host.url=http://localhost:9000 ^
-                              -Dsonar.login=squ_4c861f4b68932a119f73d5ffd385ccd0fc4edee8
-                        '''
-                    }
-                }
-            }
+   stage('SonarQube Analysis') {
+    steps {
+        withSonarQubeEnv('sonarQube') {
+            bat '''
+                gradle sonarqube ^
+                  -Dsonar.projectKey=my-maven-app ^
+                  -Dsonar.host.url=http://localhost:9000 ^
+                  -Dsonar.login=squ_4c861f4b68932a119f73d5ffd385ccd0fc4edee8
+            '''
+        }
     }
 }
+    }
+}
+
 
 
